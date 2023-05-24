@@ -1,9 +1,6 @@
 #!/usr/bin/python3
-
+"""A unit test module for the console (command interpreter).
 """
-A unit test module for the console (command interpreter).
-"""
-
 import json
 import MySQLdb
 import os
@@ -20,17 +17,13 @@ from tests import clear_stream
 
 
 class TestHBNBCommand(unittest.TestCase):
+    """Represents the test class for the HBNBCommand class.
     """
-    Represents the test class for the HBNBCommand class.
-    """
-
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') == 'db', 'FileStorage test')
     def test_fs_create(self):
+        """Tests the create command with the file storage.
         """
-        Tests the create command with the file storage.
-        """
-
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             cons.onecmd('create City name="Texas"')
@@ -52,10 +45,8 @@ class TestHBNBCommand(unittest.TestCase):
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
     def test_db_create(self):
+        """Tests the create command with the database storage.
         """
-        Tests the create command with the database storage.
-        """
-
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             # creating a model with non-null attribute(s)
@@ -84,10 +75,8 @@ class TestHBNBCommand(unittest.TestCase):
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
     def test_db_show(self):
+        """Tests the show command with the database storage.
         """
-        Tests the show command with the database storage.
-        """
-
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             # showing a User instance
@@ -132,10 +121,8 @@ class TestHBNBCommand(unittest.TestCase):
     @unittest.skipIf(
         os.getenv('HBNB_TYPE_STORAGE') != 'db', 'DBStorage test')
     def test_db_count(self):
+        """Tests the count command with the database storage.
         """
-        Tests the count command with the database storage.
-        """
-
         with patch('sys.stdout', new=StringIO()) as cout:
             cons = HBNBCommand()
             dbc = MySQLdb.connect(
